@@ -1,0 +1,123 @@
+# Automated checks for Project 2. Run them yourself with:
+#
+#     uv run gatorgrade --config gatorgrade.yml
+#
+# These are the same checks that run on GitHub when you push. They check
+# that the pieces are there. The demo, the code review and the reflection
+# judge the design, and the final grade is determined by the instructor.
+
+- description: "[COMMITS] The repository has at least 15 commits"
+  check: CountCommits
+  options:
+    count: 15
+
+- description: "[MEMORY] The server offers remember, recall and three tools of its own"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_memory.py -k "offers or read_only"
+
+- description: "[MEMORY] remember saves a note, and an empty note is an error result"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_memory.py -k "remember_saves or empty_note"
+
+- description: "[MEMORY] recall finds a note, best match first, at most five"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_memory.py -k "recall"
+
+- description: "[MEMORY] Memory calls are logged"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_memory.py::test_memory_calls_are_logged
+
+- description: "[TESTS] You have at least two test files of your own"
+  check: CountCommandOutput
+  options:
+    command: ls tests/test_*.py
+    count: 4
+
+- description: "[TESTS] Every test passes"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest
+
+- description: "[RUN] The log holds at least twenty calls"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_session.py::test_the_log_holds_twenty_calls
+
+- description: "[RUN] The agent remembered and recalled"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_session.py::test_the_agent_remembered_and_recalled
+
+- description: "[RUN] A guardrail rejected a call"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_session.py::test_a_guardrail_rejected_a_call
+
+- description: "[RUN] The agent used three of your tools"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_session.py::test_the_agent_used_three_of_your_tools
+
+- description: "[STYLE] The code follows the Google Python style guide"
+  check: ExecuteCommand
+  options:
+    command: uv run ruff check src tests
+
+- src/server.py:
+  - description: "[CODE] The server has no TODO left"
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+
+- AGENTS.md:
+  - description: "[CODE] AGENTS.md holds your instructions, no TODO left"
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+
+- docs/plan.md:
+  - description: "[PLAN] The plan has no TODO left"
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+  - description: "[PLAN] The plan meets the 300 word minimum"
+    check: CountFileWords
+    options:
+      count: 300
+      exact: false
+
+- docs/evaluation.md:
+  - description: "[EVALUATION] The evaluation has no TODO left"
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+  - description: "[EVALUATION] The evaluation records at least six tasks with an outcome"
+    check: MatchFileRegex
+    options:
+      regex: "\\*\\*Outcome:\\*\\* (Met|Partly met|Not met)"
+      count: 6
+
+- docs/reflection.md:
+  - description: "[REFLECTION] The reflection has no TODO left"
+    check: MatchFileFragment
+    options:
+      fragment: "TODO"
+      count: 0
+      exact: true
+  - description: "[REFLECTION] The reflection meets the 400 word minimum"
+    check: CountFileWords
+    options:
+      count: 400
+      exact: false

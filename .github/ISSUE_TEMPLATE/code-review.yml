@@ -1,0 +1,69 @@
+name: Code review
+description: Tuesday 1 December. Filled in by the instructor during the code review of the finished project.
+title: "Project 2 code review"
+labels: ["code review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Filled in by the instructor at the code review. You are asked about parts of your server
+        and have to be able to explain them without looking at them first, including any code an
+        agent wrote for you.
+  - type: checkboxes
+    attributes:
+      label: Implementation, 6 points
+      description: Checked in the code and by running it.
+      options:
+        - label: At least three task tools, each with a docstring the model can act on and the right annotation
+        - label: remember saves to the memory file, and recall returns the best matches first, at most five, by the method plan.md names
+        - label: Two guardrails reject bad calls with an error result the model can act on
+        - label: Every call goes through run and is logged
+        - label: AGENTS.md says when to remember and when to recall, and has a rule about side effects
+        - label: The student's own tests cover each task tool and at least one guardrail, and pass
+  - type: input
+    attributes:
+      label: Implementation score, out of 6
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Evaluation, 2 points
+      options:
+        - label: At least six tasks, every required kind included, each with the prompt, what should happen and an outcome
+        - label: Each outcome is backed by lines from the log, and the committed log matches them
+  - type: input
+    attributes:
+      label: Evaluation score, out of 2
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Written reflection, 2 points
+      options:
+        - label: Each goal from plan.md is revisited honestly, including any goal that was not met
+        - label: "What memory changed and the planted instruction are tied to the student's own runs"
+        - label: Who this could harm names a concrete action and a concrete wrong note
+        - label: The AI disclosure names the tool, what it was used for, and what was done with the output, or says "none"
+  - type: input
+    attributes:
+      label: Reflection score, out of 2
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Oral component, 2 points
+      description: Outcome is 2 (explained it), 1 (explained it with gaps), or 0 (could not).
+      value: |
+        | Asked about | Outcome |
+        | --- | --- |
+        |  |  |
+        |  |  |
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Total, out of 14
+      description: Implementation, evaluation, reflection and oral, plus the demo score from the demo issue.
+  - type: textarea
+    attributes:
+      label: Notes

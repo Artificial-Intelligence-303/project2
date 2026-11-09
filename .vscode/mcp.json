@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "project2": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "src/server.py"]
+    }
+  }
+}

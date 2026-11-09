@@ -1,0 +1,43 @@
+name: Demo
+description: Tuesday 24 November, in lab. Filled in by the instructor during the demo.
+title: "Project 2 demo"
+labels: ["demo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Filled in by the instructor during the Tuesday 24 November lab. You run two of your
+        evaluation tasks live in the Agents window, one of them using memory from an earlier
+        session, and walk your table through the log. This is the project's presentation.
+  - type: input
+    attributes:
+      label: The task the server is for
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: What the demo showed
+      description: Tick what was seen working, not what was described.
+      options:
+        - label: Copilot's agent called at least two of the student's own tools in one run
+        - label: A new session used a note saved in an earlier one, through recall
+        - label: A call with a side effect was approved or declined by the student, and the log shows which
+        - label: The student read the log aloud and said which call came from which step of the run
+        - label: The student explained one guardrail and showed the error result it returns
+        - label: The student answered a question from the table about a design choice
+  - type: dropdown
+    attributes:
+      label: Outcome
+      options:
+        - "Complete: two tasks ran live and the log was explained (2 points)"
+        - "Partial: one task ran, or the log was not explained (1 point)"
+        - "Not yet: nothing ran (0)"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Before the code review
+      description: What has to change in the week left, in the order to do it.
+  - type: textarea
+    attributes:
+      label: Notes
