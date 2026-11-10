@@ -146,16 +146,10 @@ planted instruction to your own runs, and says who this agent could harm.
 
 ## How this project was built
 
-I chose the project's design, its milestones, the demo as its
-presentation, the point split, and the rule that the task is real and
-works on a public dataset or on data you already have. Claude drafted the
-README, the starting server, the provided tests, the issue forms and the
-automated checks, and edited the text for readability with a writing skill
-called humanizer. A separate Claude session built a complete sample
-solution, a course planner, to test the assignment from start to finish,
-and what it ran into shaped the provided tests. Both checked that the tests
-pass on working code and fail on the starting code. I reviewed the result
-before release.
+I chose the project's design, its milestones, rules, tests, and README outline. Claude drafted the starting server, the issue forms and the
+automated checks, and edited the text for readability. I built a complete sample
+solution to test the assignment,
+and used it to build the provided tests. 
 
 ## AI use on this project
 
