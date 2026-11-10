@@ -62,6 +62,13 @@ are asked about.
 - `tests/test_session.py`: checks your committed log after your evaluation.
 - `docs/plan.md`, `docs/evaluation.md` and `docs/reflection.md` to fill in.
 
+## A worked example to read
+
+The `src/server.py` in your Challenge 7 repository is a finished server of
+the shape this project asks for. Each tool is a function with an annotation
+and a docstring the model reads, and its body returns a call to `run`. Read
+it for that shape; your task, tools and memory are your own.
+
 ## Evaluation: run your agent
 
 Run at least six tasks through Copilot's agent in the Agents window, and
