@@ -95,12 +95,6 @@
       fragment: "TODO"
       count: 0
       exact: true
-  - description: "[PLAN] The plan links the source of its data"
-    check: MatchFileRegex
-    options:
-      regex: "https?://"
-      count: 1
-      exact: false
   - description: "[PLAN] The plan meets the 300 word minimum"
     check: CountFileWords
     options:

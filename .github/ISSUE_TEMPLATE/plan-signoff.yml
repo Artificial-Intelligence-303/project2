@@ -1,21 +1,22 @@
 name: Plan sign-off
-description: Posted by the instructor after reading docs/plan.md. There is nothing here for you to fill in.
+description: Posted by your instructor after reading docs/plan.md, with no part for you to fill in.
 title: "Project 2 plan sign-off"
 labels: ["plan sign-off"]
 body:
   - type: markdown
     attributes:
       value: |
-        Posted by the instructor after reading your `docs/plan.md`. Nothing here is graded and
-        nothing here is for you to fill in. A ticked box is a part of the plan that is settled.
-        Anything left unticked is what to change before you build that part.
+        Your instructor posts this after reading your `docs/plan.md`. It is not graded, and there
+        is no part for you to fill in. A ticked box is a part of the plan that is settled, and
+        anything left unticked is what to change before you build that part.
   - type: checkboxes
     attributes:
       label: The plan
       options:
         - label: "The task is a real one, for one person, and the three requests are things that person would type."
-        - label: "The dataset is public, its source and license are linked, it is trimmed to the task, and it describes things rather than people."
-        - label: "Records about the person are real-like: made up, in the shape of the real data."
+        - label: "The data is a public dataset, with its source and license linked and trimmed to the task, or data you already have."
+        - label: "Private data stays out of the repository, and a real-like copy in the same shape is committed instead."
+        - label: "Records about other people are made up."
         - label: "At least three tools besides remember and recall, and each is a single action an agent can choose."
         - label: "One tool only reads, and one changes something; any tool that cannot be undone is marked that way."
         - label: "What is worth remembering is specific to the task, and it is something the agent needs in a later session."

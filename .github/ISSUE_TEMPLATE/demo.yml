@@ -6,9 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Filled in by the instructor during the Tuesday 24 November lab. You run two of your
-        evaluation tasks live in the Agents window, one of them using memory from an earlier
-        session, and walk your table through the log. This is the project's presentation.
+        Your instructor fills this in during the Tuesday 24 November lab. The demo is the project's
+        presentation: you run two of your evaluation tasks live in the Agents window, one of them
+        using memory from an earlier session, and walk your table through the log.
   - type: input
     attributes:
       label: The task the server is for
@@ -31,7 +31,7 @@ body:
       options:
         - "Complete: two tasks ran live and the log was explained (2 points)"
         - "Partial: one task ran, or the log was not explained (1 point)"
-        - "Not yet: nothing ran (0)"
+        - "Not yet: no task ran (0)"
     validations:
       required: true
   - type: textarea

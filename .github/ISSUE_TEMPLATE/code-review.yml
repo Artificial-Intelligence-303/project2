@@ -6,14 +6,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        Filled in by the instructor at the code review. You are asked about parts of your server
-        and have to be able to explain them without looking at them first, including any code an
-        agent wrote for you.
+        Your instructor fills this in at the code review. You will be asked about parts of your
+        server, including any code an agent wrote for you, and should be able to explain them
+        without looking at them first.
   - type: checkboxes
     attributes:
       label: Implementation, 6 points
       description: Checked in the code and by running it.
       options:
+        - label: The data in data/ suits the task, with a public source linked or a real-like copy of private data, and records about other people are made up
         - label: At least three task tools, each with a docstring the model can act on and the right annotation
         - label: remember saves to the memory file, and recall returns the best matches first, at most five, by the method plan.md names
         - label: Two guardrails reject bad calls with an error result the model can act on

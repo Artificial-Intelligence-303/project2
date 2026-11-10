@@ -4,10 +4,10 @@ VS Code starts this server from `.vscode/mcp.json`, and Copilot's agent
 calls its tools. Every call goes through `run`, which adds it to
 `logs/tool-calls.jsonl`; `uv run python src/main.py log` prints that file.
 
-Provided: the server, `run`, the three kinds of annotation, and the paths
-`LOG` and `MEMORY`. Yours: every tool, including `remember` and `recall`.
-Keep `LOG` and `MEMORY` as module-level names, because the provided tests
-point them at a scratch folder.
+The server, `run`, the three kinds of annotation and the paths `LOG` and
+`MEMORY` are provided. Every tool is yours to write, `remember` and
+`recall` included. Keep `LOG` and `MEMORY` as module-level names, because
+the provided tests point them at a scratch folder.
 """
 
 import datetime
