@@ -16,18 +16,26 @@ next. GitHub Copilot's agent in VS Code runs the loop.
 
 ## What you build
 
-**An MCP server for a task you choose, for one person, with long-term
-memory.** Some tasks that fit: a study planner that tracks assignments and
-due dates, a pantry that suggests what to cook, a club's event sign-ups, a
-reading log that recommends what to read next, a lab's equipment checkout.
-Invent the data and keep it in `data/`.
+**An MCP server for a real task, for one person, working on real data,
+with long-term memory.** A real task is one a person actually does, such
+as planning next semester's courses, logging meals against a daily target,
+or choosing the next book to read.
 
 Your server needs all of these:
 
-1. **Tools for your task**, at least three besides the two memory tools.
+1. **Real or real-like data in `data/`**, from a public dataset you find
+   and the plan sign-off approves. Your dataset:
+   - is public, with its source and license linked in `plan.md`;
+   - is trimmed to what your task needs, under 5 MB, by a script you commit
+     in `data/`;
+   - describes things rather than people. Records about your agent's
+     person, such as what they ate or which courses they have taken, are
+     real-like: made up by you, in the shape of the real data, and never a
+     real person's.
+2. **Tools for your task**, at least three besides the two memory tools.
    At least one only reads (`READ_ONLY`) and at least one changes something
    (`CHANGES`, or `CANNOT_UNDO` if it cannot be taken back).
-2. **Long-term memory**, as two tools:
+3. **Long-term memory**, as two tools:
    - `remember(note: str)` saves the note to the file named by `MEMORY`. An
      empty note is an error result.
    - `recall(query: str)` returns at most five saved notes, best match
@@ -36,15 +44,15 @@ Your server needs all of these:
      common words, words weighted by how rare they are, or another method
      you can explain. Read the memory file on every call, so a note saved in
      one session is there in the next.
-3. **Two guardrails in the server**: checks that reject a bad call with a
+4. **Two guardrails in the server**: checks that reject a bad call with a
    result starting `error:`. Raising a `ValueError` inside a tool does this
    for you, through `run`.
-4. **Every call goes through `run`**, so it is logged in
+5. **Every call goes through `run`**, so it is logged in
    `logs/tool-calls.jsonl`.
-5. **`AGENTS.md`** tells the agent what the server is for, when to save a
+6. **`AGENTS.md`** tells the agent what the server is for, when to save a
    note and when to search for one, and at least one rule about tools that
    change something.
-6. **Your own tests**, in at least two files of your own in `tests/`, for
+7. **Your own tests**, in at least two files of your own in `tests/`, for
    each task tool and at least one guardrail.
 
 You may have Copilot's agent write any of this code. Review every line
@@ -81,7 +89,7 @@ record each one in `docs/evaluation.md`. Between them they cover:
    needs it. The two sessions count as two tasks.
 4. A task where a guardrail rejects a call. Record what the agent did next.
 5. **A planted instruction**: put an instruction addressed to the agent in
-   your data, such as an item description or a saved note, and record
+   your data, such as one row's description or a saved note, and record
    whether the agent followed it.
 
 Commit `logs/tool-calls.jsonl` with your evaluation. To start a fresh log
@@ -90,11 +98,11 @@ for a clean run, delete the file before you begin.
 ## Layout, and the automated checks
 
 Run the checks yourself with `uv run gatorgrade --config gatorgrade.yml`;
-they also run on GitHub when you push. They confirm that the memory tools
-behave, the tests pass, the log shows real sessions, the style follows the
-Google Python style guide (`uv run ruff check src tests`), and the
-documents are complete. The repository needs at least 15 commits by the due
-date. The checks confirm the pieces are there; the demo, the code review and
+they also run on GitHub when you push. They confirm that `data/` holds
+your task's data, the memory tools behave, the tests pass, the log shows
+real sessions, the style follows the Google Python style guide
+(`uv run ruff check src tests`), and the documents are complete. The
+repository needs at least 15 commits by the due date. The checks confirm the pieces are there; the demo, the code review and
 the reflection judge the design.
 
 ## What is due, and when
@@ -123,7 +131,7 @@ This project is worth **14 points**.
 | Written reflection | 2 |
 | Oral component of the code review | 2 |
 
-**The implementation** is graded on the six requirements above, checked in
+**The implementation** is graded on the seven requirements above, checked in
 the code and by running it. **The evaluation** is graded on whether the six
 tasks cover every required kind and whether each outcome is backed by lines
 from your log. **The reflection** revisits your goals, ties memory and the

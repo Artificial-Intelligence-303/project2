@@ -13,6 +13,17 @@ TODO
 
 ---
 
+## Your data
+
+Which dataset you found, with a link to its source and its license, what
+one row holds, and how many rows you kept. Then the records your agent
+keeps for its person, such as a course plan or a food log: what one record
+holds, and how you made up the real-like records it starts with.
+
+TODO
+
+---
+
 ## Your tools
 
 One row per tool, `remember` and `recall` included. Kind is read-only,

@@ -11,6 +11,11 @@
   options:
     count: 15
 
+- description: "[DATA] data/ holds your task's data, besides memory.json"
+  check: ExecuteCommand
+  options:
+    command: ls data | grep -v -x memory.json
+
 - description: "[MEMORY] The server offers remember, recall and three tools of its own"
   check: ExecuteCommand
   options:
@@ -90,6 +95,12 @@
       fragment: "TODO"
       count: 0
       exact: true
+  - description: "[PLAN] The plan links the source of its data"
+    check: MatchFileRegex
+    options:
+      regex: "https?://"
+      count: 1
+      exact: false
   - description: "[PLAN] The plan meets the 300 word minimum"
     check: CountFileWords
     options:

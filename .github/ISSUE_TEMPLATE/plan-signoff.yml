@@ -13,7 +13,9 @@ body:
     attributes:
       label: The plan
       options:
-        - label: "The task is for one person, and the three requests are things that person would type."
+        - label: "The task is a real one, for one person, and the three requests are things that person would type."
+        - label: "The dataset is public, its source and license are linked, it is trimmed to the task, and it describes things rather than people."
+        - label: "Records about the person are real-like: made up, in the shape of the real data."
         - label: "At least three tools besides remember and recall, and each is a single action an agent can choose."
         - label: "One tool only reads, and one changes something; any tool that cannot be undone is marked that way."
         - label: "What is worth remembering is specific to the task, and it is something the agent needs in a later session."
