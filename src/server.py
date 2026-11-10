@@ -4,10 +4,11 @@ VS Code starts this server from `.vscode/mcp.json`, and Copilot's agent
 calls its tools. Every call goes through `run`, which adds it to
 `logs/tool-calls.jsonl`; `uv run python src/main.py log` prints that file.
 
-The server, `run`, the three kinds of annotation and the paths `LOG` and
-`MEMORY` are provided. Every tool is yours to write, `remember` and
-`recall` included. Keep `LOG` and `MEMORY` as module-level names, because
-the provided tests point them at a scratch folder.
+The server, `run`, the three kinds of annotation and the paths `LOG`,
+`MEMORY` and `DATA` are provided. Every tool is yours to write, `remember`
+and `recall` included. Keep `LOG`, `MEMORY` and `DATA` as module-level
+names, and build each data file's path from `DATA` inside the tool that
+uses it, because the provided tests point all three at a scratch folder.
 """
 
 import datetime
@@ -20,7 +21,8 @@ from mcp.types import ToolAnnotations
 
 ROOT = Path(__file__).parent.parent
 LOG = ROOT / "logs" / "tool-calls.jsonl"
-MEMORY = ROOT / "data" / "memory.json"
+DATA = ROOT / "data"
+MEMORY = DATA / "memory.json"
 
 server = MCPServer(
     "project2",

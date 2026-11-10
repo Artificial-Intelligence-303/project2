@@ -53,7 +53,10 @@ Your server needs all of these:
    a note and when to search for one, and at least one rule about tools
    that change something.
 7. Tests of your own, in at least two files in `tests/`, covering each task
-   tool and at least one guardrail.
+   tool and at least one guardrail. The provided `tests/conftest.py` gives
+   every test its own copy of `data/` through `DATA`, so a test that needs
+   the person's records in a known state can write them there first
+   without touching your real data.
 
 You may have Copilot's agent write any of this code. Review every line
 before you commit it, because at the code review you will explain any part
@@ -62,7 +65,9 @@ you are asked about.
 ## What is provided
 
 - `src/server.py`: the server, the `run` helper from Challenge 7, the three
-  annotations, and the paths `LOG` and `MEMORY`. It has no tools yet.
+  annotations, and the paths `LOG`, `MEMORY` and `DATA`. It has no tools
+  yet. Build each data file's path from `DATA` inside the tool that uses
+  it.
 - `src/main.py`: `uv run python src/main.py log` prints your log.
 - `.vscode/mcp.json`: starts your server as `project2` in VS Code.
 - `tests/test_memory.py`: checks every server's memory tools the same way.
