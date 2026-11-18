@@ -83,6 +83,90 @@ the shape this project asks for. Each tool is a function with an annotation
 and a docstring the model reads, and its body returns a call to `run`. Read
 it for that shape, and make the task, tools and memory your own.
 
+## If you are stuck for a task
+
+A task is ready to plan when you can name the person, write three requests
+they would type, and point to one change the agent should ask about before
+making it. Any of these works, and so does one of your own. Check the
+license of whatever you download, and link it in `plan.md`.
+
+**From a public dataset**
+
+- **Movie night.** [MovieLens](https://grouplens.org/datasets/movielens/)
+  (free for study, cite it) or [IMDb's non-commercial
+  files](https://developer.imdb.com/non-commercial-datasets/). Read: titles
+  by genre, year and running time. Change: add to the watchlist, mark one
+  watched. Memory: films already seen, no films over two hours on a
+  weeknight. Guardrail: a rating limit the household set.
+- **Board game night.** A BoardGameGeek export on Kaggle, with player
+  counts, playing times and weights. Read: games that fit tonight's group
+  and time. Change: put a game on tonight's list. Memory: who will not play
+  a deduction game, what was played last week. Guardrail: the player count
+  has to fit the group.
+- **Workouts.** [free-exercise-db](https://github.com/yuhonas/free-exercise-db)
+  (public domain): 800 exercises with muscles and equipment. Read:
+  exercises for the equipment the person owns. Change: log a workout, plan
+  a week. Memory: an injury to work around. Guardrail: sets and reps in a
+  sane range.
+- **Chess openings.**
+  [lichess-org/chess-openings](https://github.com/lichess-org/chess-openings)
+  (CC0): names, ECO codes and moves. Read: look up an opening by name or by
+  moves. Change: add a line to a repertoire. Memory: what the person plays
+  as White and as Black, the lines they keep losing. Guardrail: the moves
+  have to match an opening in the table.
+- **Birds, or any living thing, near Meadville.** A
+  [GBIF](https://www.gbif.org/) occurrence download for Crawford County
+  (each dataset inside it states its license). Read: species seen locally
+  in a given month. Change: log a sighting on a life list. Memory: species
+  the person wants to see. Guardrail: the species has to be on the regional
+  list, and a sighting cannot be dated in the future.
+- **Public domain reading.** The [Project Gutenberg
+  catalog](https://www.gutenberg.org/ebooks/offline_catalogs.html), one row
+  per book with author, subjects and language. Read: books by author or
+  subject. Change: shelve a book, mark it finished. Memory: authors the
+  person liked, no poetry. Guardrail: a book cannot be marked finished
+  unless it is on the shelf.
+- **A road trip in an electric car.** The [Alternative Fuel Stations
+  list](https://afdc.energy.gov/data_download) from the US Department of
+  Energy (public domain, free key to download). Read: stations near a town
+  with the right plug. Change: add a charging stop to the route. Memory:
+  the car's plug type and range. Guardrail: refuse a next stop farther than
+  the car can go.
+- **Getting around by bus.** The GTFS feed of a transit agency the person
+  rides, found through [transit.land](https://www.transit.land/), which
+  lists each feed's license. Your trim script keeps one or two routes.
+  Read: departures from a stop. Change: save a commute. Memory: the stop
+  the person prefers and when they need to arrive. Guardrail: the stop has
+  to exist in the feed.
+- **Flashcards.** A public word list, such as a Wiktionary frequency list
+  (CC BY-SA), or the vocabulary of a course you are taking. Read: the cards
+  due today. Change: grade a card, which sets its next review date.
+  Memory: the pairs the person confuses. Guardrail: a grade is 0 to 5, and
+  a card is added once.
+
+**From data you already have**
+
+Private data stays out of the repository. You commit a real-like copy in
+the same shape, and the agent only ever reads what you are comfortable
+sending to the model's provider.
+
+- **Deadlines.** Your Canvas calendar feed, exported as `.ics`. Read: what
+  is due this week. Change: add a task, mark one done, split a project into
+  steps. Memory: when the person works best. Guardrail: a due date cannot
+  be in the past.
+- **Money.** A bank or card export. Read: a month by category. Change: add
+  an expense, set a category's budget. Memory: rent day, what is split with
+  a roommate. Guardrail: amounts are positive and the category has to
+  exist.
+- **Applications.** Your internship tracker. Read: open applications and
+  deadlines this week. Change: add one, move its status. Memory: what a
+  recruiter said. Guardrail: a status moves forward only, and a company and
+  role pair is added once.
+- **A pet's care.** Your feeding and medication log. Read: what is due
+  today. Change: record a dose, which `CANNOT_UNDO`. Memory: what the vet
+  said at the last visit. Guardrail: a dose cannot be recorded again before
+  its interval has passed.
+
 ## Running your agent on six tasks
 
 Run at least six tasks through Copilot's agent in the Agents window, and
